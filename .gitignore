@@ -1,0 +1,72 @@
+# --- 컴파일 결과물 (Compiled Object files) ---
+*.slo
+*.lo
+*.o
+*.obj
+*.d
+
+# --- 정적/동적 라이브러리 (Libraries) ---
+*.gch
+*.pch
+*.lib
+*.a
+*.la
+*.lo
+*.dll
+*.so
+*.so.*
+*.dylib
+*.cmake
+
+# --- 실행 파일 및 바이너리 (Executables) ---
+*.exe
+*.out
+*.app
+*.elf
+*.bin
+*.hex
+*.map
+*.img
+
+# --- 빌드 디렉토리 (Build Directories) ---
+[Bb]uild/
+[Oo]ut/
+[Bb]in/
+[Oo]bj/
+ipch/
+
+# --- IDE 및 에디터 설정 (IDEs/Editors) ---
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Visual Studio
+.vs/
+Debug/
+Release/
+x64/
+x86/
+*.user
+*.suo
+*.db
+*.opendb
+
+# CLion / JetBrains
+.idea/
+cmake-build-*/
+
+# Vim
+*.swp
+*.swo
+*~
+
+# --- 운영체제 임시 파일 (OS Files) ---
+.DS_Store
+Thumbs.db
+
+# --- 프로젝트별 커스텀 (Specific to your recent issues) ---
+vcpSignTool
+*.tmp
