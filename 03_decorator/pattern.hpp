@@ -1,17 +1,36 @@
-class abcd
+#pragma once
+
+#include "interface.hpp"
+#include "pch.hpp"
+
+class coffee : public IComponent
 {
 private:
-    /* data */
+    int coffeeCost = 5;
 public:
-    abcd(/* args */);
-    ~abcd();
+    int cost() override;
 };
 
-abcd::abcd(/* args */)
+class decorator : public IComponent
 {
-    cout << "abcd" << endl;
-}
+protected:
+    shared_ptr<IComponent> wrapper;
+public:
+    decorator(shared_ptr<IComponent>&& wpp) : wrapper(wpp){};
+    virtual int cost() = 0;
+};
 
-abcd::~abcd()
+class sugar : public decorator
 {
-}
+public:
+    sugar(shared_ptr<IComponent>&& wpp) : decorator(move(wpp)) {};
+    int cost() override;
+};
+
+class cream : public decorator
+{
+public:
+    cream(shared_ptr<IComponent>&& wpp) : decorator(move(wpp)) {};
+    int cost() override;
+};
+

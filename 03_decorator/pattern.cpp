@@ -1,10 +1,19 @@
-#include "../pch.hpp"
 #include "pattern.hpp"
 
-int main() 
+int coffee::cost()
 {
-    abcd* a = new abcd();
-    delete a;
+    cout << "coffee cost" << endl;
+    return coffeeCost;
+}
 
-    return 0;
+int sugar::cost()
+{
+    cout << "sugar cost" << endl;
+    return 2 + wrapper->cost();
+}
+
+int cream::cost()
+{
+    cout << "cream cost" << endl;
+    return 3 + wrapper->cost();
 }
