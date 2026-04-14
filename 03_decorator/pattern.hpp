@@ -13,6 +13,7 @@ public:
 
 class decorator : public IComponent
 {
+    //얘가 좀 거슬린다.
 protected:
     shared_ptr<IComponent> wrapper;
 public:
