@@ -3,9 +3,9 @@
 
 int main() 
 {
-    shared_ptr<IComponent> cff = make_shared<coffee>();
-    shared_ptr<IComponent> cffWithSugar = make_shared<sugar>(move(cff));
-    shared_ptr<IComponent> cffWithSugarAndCream = make_shared<cream>(move(cffWithSugar));
+    unique_ptr<IComponent> cff = make_unique<coffee>();
+    unique_ptr<IComponent> cffWithSugar = make_unique<sugar>(move(cff));
+    unique_ptr<IComponent> cffWithSugarAndCream = make_unique<cream>(move(cffWithSugar));
 
     cout << cffWithSugarAndCream->cost() << endl;
 

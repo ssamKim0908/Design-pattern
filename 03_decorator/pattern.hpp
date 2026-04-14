@@ -15,23 +15,23 @@ class decorator : public IComponent
 {
     //얘가 좀 거슬린다.
 protected:
-    shared_ptr<IComponent> wrapper;
+    unique_ptr<IComponent> wrapper;
 public:
-    decorator(shared_ptr<IComponent>&& wpp) : wrapper(wpp){};
+    decorator(unique_ptr<IComponent>&& wpp) : wrapper(move(wpp)){};
     virtual int cost() = 0;
 };
 
 class sugar : public decorator
 {
 public:
-    sugar(shared_ptr<IComponent>&& wpp) : decorator(move(wpp)) {};
+    sugar(unique_ptr<IComponent>&& wpp) : decorator(move(wpp)) {};
     int cost() override;
 };
 
 class cream : public decorator
 {
 public:
-    cream(shared_ptr<IComponent>&& wpp) : decorator(move(wpp)) {};
+    cream(unique_ptr<IComponent>&& wpp) : decorator(move(wpp)) {};
     int cost() override;
 };
 
