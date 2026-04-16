@@ -24,17 +24,18 @@ private:
     using UniqueSemaCustomDeleter = unique_ptr<sem_t, FCustomDeleter>;
 
     int num;
+    thread t;
     UniqueSemaCustomDeleter sema;
     atomic<bool> finish{false};
 
 public:
     ObserverThread(const string &&str, int number);
 
-    ObserverThread(const ObserverThread &obj) = delete;
-    ObserverThread &operator=(const ObserverThread &obj) = delete;
+    ObserverThread(const ObserverThread &obj)               = delete;
+    ObserverThread &operator=(const ObserverThread &obj)    = delete;
 
-    ObserverThread(const ObserverThread &&obj) = delete;
-    ObserverThread &operator=(const ObserverThread &&obj) = delete;
+    ObserverThread(const ObserverThread &&obj)              = delete;
+    ObserverThread &operator=(const ObserverThread &&obj)   = delete;
 
     void wait();
     void post();
@@ -47,44 +48,29 @@ public:
     bool getTrue() { return finish; }
 
     virtual void threadImpl() = 0;
-    virtual void startThreadImpl() = 0;
     int getNum() { return num; }
 
-    ~ObserverThread() = default;
+    ~ObserverThread();
 };
 
 class ObserverThreadFirstClassImpl : public ObserverThread
 {
-private:
-    thread t;
-
 public:
     ObserverThreadFirstClassImpl(const string &&str, int number) : ObserverThread(move(str), number) {};
     void threadImpl() override;
-    void startThreadImpl() override;
-    ~ObserverThreadFirstClassImpl();
 };
 
 class ObserverThreadSecondClassImpl : public ObserverThread
 {
-private:
-    thread t;
-
 public:
     ObserverThreadSecondClassImpl(const string &&str, int number) : ObserverThread(move(str), number) {};
     void threadImpl() override;
-    void startThreadImpl() override;
-    ~ObserverThreadSecondClassImpl();
 };
 
 class ObserverThreadThirdClassImpl : public ObserverThread
 {
-private:
-    thread t;
 
 public:
     ObserverThreadThirdClassImpl(const string &&str, int number) : ObserverThread(move(str), number) {};
     void threadImpl() override;
-    void startThreadImpl() override;
-    ~ObserverThreadThirdClassImpl();
 };

@@ -25,7 +25,7 @@ void ObserverThread::post()
 
 void ObserverThread::startThread()
 {
-    startThreadImpl();
+    t = std::thread(&ObserverThread::threadImpl, this);
 };
 
 void ObserverThread::update(int newNum)
@@ -34,13 +34,7 @@ void ObserverThread::update(int newNum)
     post();
 }
 
-//First
-void ObserverThreadFirstClassImpl::startThreadImpl()
-{
-    t = std::thread(&ObserverThread::threadImpl, shared_from_this());
-}
-
-ObserverThreadFirstClassImpl::~ObserverThreadFirstClassImpl()
+ObserverThread::~ObserverThread()
 {
     setTrue();
     post();
@@ -50,6 +44,7 @@ ObserverThreadFirstClassImpl::~ObserverThreadFirstClassImpl()
     }
 }
 
+//First
 void ObserverThreadFirstClassImpl::threadImpl()
 {
     while(!getTrue())
@@ -60,21 +55,6 @@ void ObserverThreadFirstClassImpl::threadImpl()
 }
 
 //Second
-void ObserverThreadSecondClassImpl::startThreadImpl()
-{
-    t = std::thread(&ObserverThread::threadImpl, shared_from_this());
-}
-
-ObserverThreadSecondClassImpl::~ObserverThreadSecondClassImpl()
-{
-    setTrue();
-    post();
-    if (t.joinable())
-    {
-        t.join();
-    }
-}
-
 void ObserverThreadSecondClassImpl::threadImpl()
 {
     while(!getTrue())
@@ -86,21 +66,6 @@ void ObserverThreadSecondClassImpl::threadImpl()
 
 
 //Third
-void ObserverThreadThirdClassImpl::startThreadImpl()
-{
-    t = std::thread(&ObserverThread::threadImpl, shared_from_this());
-}
-
-ObserverThreadThirdClassImpl::~ObserverThreadThirdClassImpl()
-{
-    setTrue();
-    post();
-    if (t.joinable())
-    {
-        t.join();
-    }
-}
-
 void ObserverThreadThirdClassImpl::threadImpl()
 {
     while(!getTrue())
