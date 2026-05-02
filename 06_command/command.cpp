@@ -57,20 +57,10 @@ void CommandCountExecute::execute()
     recv->impl.add_count();
 }
 
-void CommandCountExecute::undo()
-{
-    recv->impl.minus_count();
-}
-
 //Count Undo
 void CommandCountUndo::execute()
 {
     recv->impl.minus_count();
-}
-
-void CommandCountUndo::undo()
-{
-    recv->impl.add_count();
 }
 
 //Print Execute
@@ -79,18 +69,8 @@ void CommandPrintExecute::execute()
     recv->impl.print_excute();
 }
 
-void CommandPrintExecute::undo()
-{
-    recv->impl.print_undo();
-}
-
 //Print Undo
 void CommandPrintUndo::execute()
 {
     recv->impl.print_undo();
-}
-
-void CommandPrintUndo::undo()
-{
-    recv->impl.print_excute();
 }

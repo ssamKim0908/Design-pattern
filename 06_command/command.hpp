@@ -20,7 +20,6 @@ public:
     ~CommandCountExecute();
 
     void execute();
-    void undo();
 };
 
 class CommandCountUndo : public ICommand
@@ -32,7 +31,6 @@ public:
     ~CommandCountUndo();
 
     void execute();
-    void undo();
 };
 
 
@@ -45,7 +43,6 @@ public:
     ~CommandPrintExecute();
 
     void execute();
-    void undo();
 };
 
 class CommandPrintUndo : public ICommand
@@ -57,5 +54,4 @@ public:
     ~CommandPrintUndo();
 
     void execute();
-    void undo();
 };
