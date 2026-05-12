@@ -1,30 +1,26 @@
-```mermaid
-classDiagram
-    direction LR
+graph TD
+    %% 레이아웃 방향 설정 (Top-Down)
+    
+    subgraph "Definition Layer"
+        direction LR
+        Context[Context] --- Interface{{"<< interface >> <br/> IStrategyCalculator"}}
+    end
 
-    %% 1. 정의 (Context와 Interface를 먼저 써서 왼쪽에 배치 유도)
-    class Context {
-        -IStrategyCalculator strategy
-        +setStrategy(IStrategyCalculator s)
-        +calculate(int a, int b) : int
-    }
+    subgraph "Implementation Layer"
+        direction TB
+        Plus[Plus]
+        Minus[Minus]
+        Product[Product]
+    end
 
-    class IStrategyCalculator {
-        <<interface>>
-        +calculate(int a, int b) : int
-    }
+    %% 연결 관계
+    Interface -.-> Plus
+    Interface -.-> Minus
+    Interface -.-> Product
 
-    direction TB
-    %% 2. 구현체들
-    class Plus { +calculate(int a, int b) : int }
-    class Minus { +calculate(int a, int b) : int }
-    class Product { +calculate(int a, int b) : int }
-
-    %% 3. 관계 설정
-    %% Context와 Interface가 수평으로 연결됩니다.
-    Context o-- IStrategyCalculator : 사용(Aggregation)
-
-    %% Interface에서 구현체들로 화살표가 뻗어나갑니다.
-    IStrategyCalculator <|.. Plus : 구현
-    IStrategyCalculator <|.. Minus : 구현
-    IStrategyCalculator <|.. Product : 구현
+    %% 스타일링 (클래스처럼 보이게)
+    style Context fill:#f9f,stroke:#333
+    style Interface fill:#fff,stroke:#333
+    style Plus fill:#eef,stroke:#333
+    style Minus fill:#eef,stroke:#333
+    style Product fill:#eef,stroke:#333
