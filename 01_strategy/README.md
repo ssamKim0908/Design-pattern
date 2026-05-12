@@ -14,6 +14,7 @@ classDiagram
         +calculate(int a, int b) : int
     }
 
+    direction TB
     %% 2. 구현체들
     class Plus { +calculate(int a, int b) : int }
     class Minus { +calculate(int a, int b) : int }
