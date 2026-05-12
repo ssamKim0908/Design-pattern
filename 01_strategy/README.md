@@ -10,13 +10,13 @@ classDiagram
     }
     note for Context "사용자(Client)와 소통하는\n컨텍스트 클래스"
 
-    %% [Layer 2: Interface]
+    %% [Layer 1: Interface]
     class IStrategyCalculator {
         <<interface>>
         +calculate(int a, int b) int
     }
 
-    %% [Layer 3: Concrete Strategies]
+    %% [Layer 2: Concrete Strategies]
     class Plus {
         +calculate(int a, int b) int
     }
