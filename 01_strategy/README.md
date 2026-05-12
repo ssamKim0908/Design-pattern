@@ -1,1 +1,1 @@
-![Class Diagram](../diagram.svg)
+![Class Diagram](../diagram/01_strategy.svg)
