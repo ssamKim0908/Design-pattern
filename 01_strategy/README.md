@@ -1,25 +1,32 @@
 ```mermaid
 classDiagram
-    direction LR
+    direction TB
 
-    %% Layer 1: Context & Interface
+    %% [Layer 1: Context && Interface]
     class Context {
         -IStrategyCalculator strategy
-        +setStrategy(s: IStrategyCalculator)
+        +setStrategy(IStrategyCalculator s)
+        +calculate(int a, int b) int
     }
+
     class IStrategyCalculator {
         <<interface>>
-        +calculate(a, b) int
+        +calculate(int a, int b) int
     }
 
-    %% Layer 2: Concrete Classes
-    class Plus
-    class Minus
-    class Product
+    %% [Layer 2: Concrete Strategies]
+    class Plus {
+        +calculate(int a, int b) int
+    }
+    class Minus {
+        +calculate(int a, int b) int
+    }
+    class Product {
+        +calculate(int a, int b) int
+    }
 
-    %% Relationships
-    Context o-- IStrategyCalculator : strategy
-    
-    IStrategyCalculator <|.. Plus
-    IStrategyCalculator <|.. Minus
-    IStrategyCalculator <|.. Product
+    %% 관계 정의
+    Context o-- IStrategyCalculator : 사용(Aggregation)
+    IStrategyCalculator <|.. Plus : 구현
+    IStrategyCalculator <|.. Minus : 구현
+    IStrategyCalculator <|.. Product : 구현
