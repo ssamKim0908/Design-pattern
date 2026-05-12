@@ -1,4 +1,4 @@
-#include "../pch.hpp"
+#include "../common_header.hpp"
 #include "pattern.hpp"
 
 int main() 
