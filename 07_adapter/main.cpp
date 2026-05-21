@@ -5,16 +5,26 @@
 
 int main() 
 {
-    std::ifstream file{"/proc/self/status"};
-    if(file.is_open())
-    {
-        std::string line;
-        while(getline(file, line))
-        {
-            cout << line << endl;
-        }
+    RVectorI32 r_vec;
 
-        file.close();
-    }
+    r_vec.push_back(3323);
+    r_vec.push_back(112);
+    r_vec.push_back(225);
+    r_vec.push_back(886487);
+
+    auto cout_r_vec = [&r_vec]()
+    {
+        for(int i = 0; i < r_vec.size(); i++)
+        {
+            cout << r_vec[i] << ' ';
+        }
+        cout << endl;
+    };
+
+    cout_r_vec();
+
+    sort(r_vec.begin(), r_vec.end());
+    
+    cout_r_vec();
     return 0;
 }
