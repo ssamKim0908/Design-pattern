@@ -1,5 +1,5 @@
 #pragma once
-#include "../pch.hpp"
+#include "../common_header.hpp"
 #include "interface.hpp"
 
 class AWeapon;

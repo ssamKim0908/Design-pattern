@@ -1,5 +1,5 @@
 #pragma once
-#include "../pch.hpp"
+#include "../common_header.hpp"
 
 class IObserver
 {
@@ -12,7 +12,6 @@ class ISubject
 {
 public:
     virtual void registerObserver   (const shared_ptr<IObserver> obj)    = 0;
-    virtual void removeObserver     (const weak_ptr<IObserver> obj)      = 0;
     virtual void notifyObservers    (int number)                         = 0;
 
     virtual ~ISubject()             = default;

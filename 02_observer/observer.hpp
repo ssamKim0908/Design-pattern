@@ -17,7 +17,7 @@ struct FCustomDeleter
     }
 };
 
-class ObserverThread : public enable_shared_from_this<ObserverThread>, public IObserver
+class ObserverThread : public IObserver
 {
 
 private:
@@ -29,7 +29,7 @@ private:
     atomic<bool> finish{false};
 
 public:
-    ObserverThread(const string &&str, int number);
+    ObserverThread(string str, int number);
 
     ObserverThread(const ObserverThread &obj)               = delete;
     ObserverThread &operator=(const ObserverThread &obj)    = delete;
@@ -56,14 +56,14 @@ public:
 class ObserverThreadFirstClassImpl : public ObserverThread
 {
 public:
-    ObserverThreadFirstClassImpl(const string &&str, int number) : ObserverThread(move(str), number) {};
+    ObserverThreadFirstClassImpl(string str, int number) : ObserverThread(move(str), number) {};
     void threadImpl() override;
 };
 
 class ObserverThreadSecondClassImpl : public ObserverThread
 {
 public:
-    ObserverThreadSecondClassImpl(const string &&str, int number) : ObserverThread(move(str), number) {};
+    ObserverThreadSecondClassImpl(string str, int number) : ObserverThread(move(str), number) {};
     void threadImpl() override;
 };
 
@@ -71,6 +71,6 @@ class ObserverThreadThirdClassImpl : public ObserverThread
 {
 
 public:
-    ObserverThreadThirdClassImpl(const string &&str, int number) : ObserverThread(move(str), number) {};
+    ObserverThreadThirdClassImpl(string str, int number) : ObserverThread(move(str), number) {};
     void threadImpl() override;
 };

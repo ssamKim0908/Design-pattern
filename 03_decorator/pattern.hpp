@@ -1,7 +1,7 @@
 #pragma once
 
 #include "interface.hpp"
-#include "pch.hpp"
+#include "common_header.hpp"
 
 class coffee : public IComponent
 {

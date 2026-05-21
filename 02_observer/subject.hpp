@@ -12,7 +12,6 @@ public:
     subject();
 
     void registerObserver   (const shared_ptr<IObserver> obj)   override;
-    void removeObserver     (const weak_ptr<IObserver> obj)     override;
     void notifyObservers    (int number) override;
 
     ~subject();

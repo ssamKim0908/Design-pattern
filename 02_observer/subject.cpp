@@ -16,17 +16,15 @@ void subject::registerObserver(const shared_ptr<IObserver> obj)
     this->obj.push_back(obj);
 }
 
-void subject::removeObserver(const weak_ptr<IObserver> obj)
-{
-
-}
-
 void subject::notifyObservers(int number)
 {
     lock_guard<mutex> Lock(mtx);
     for(const auto& element : obj)
     {
-        auto ptr = element.lock();
-        ptr->update(number);
+        if(element.expired())
+        {
+            auto ptr = element.lock();
+            ptr->update(number);
+        }
     }
 }
