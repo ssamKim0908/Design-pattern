@@ -1,6 +1,7 @@
 #include "observer.hpp"
 
-ObserverThread::ObserverThread(const string &&str, int number)
+// ***********Public******************
+ObserverThread::ObserverThread(string str, int number)
 {
     sem_unlink(str.c_str());
     sema = UniqueSemaCustomDeleter(sem_open(str.c_str(), O_CREAT, 0666, 0));
@@ -11,16 +12,6 @@ ObserverThread::ObserverThread(const string &&str, int number)
     }
 
     num = number;
-}
-
-void ObserverThread::wait()
-{
-    sem_wait(sema.get());
-}
-
-void ObserverThread::post()
-{
-    sem_post(sema.get());
 }
 
 void ObserverThread::startThread()
@@ -42,6 +33,17 @@ ObserverThread::~ObserverThread()
     {
         t.join();
     }
+}
+
+// ***********protected******************
+void ObserverThread::wait()
+{
+    sem_wait(sema.get());
+}
+
+void ObserverThread::post()
+{
+    sem_post(sema.get());
 }
 
 //First

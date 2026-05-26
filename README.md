@@ -25,7 +25,7 @@
 | 04 | **Factory** | Creational | ✅ | [`04_factory/`](./04_factory) | 
 | 05 | **Singleton** | Creational | ⬜ | - | 
 | 06 | **Command** | Behavioral | ✅ | [`06_command/`](./06_command) |
-| 07 | **Adapter & Facade** | Structural | 🚧 | [`07_adapter/`](./07_adapter) |
+| 07 | **Adapter & Facade** | Structural | ✅ | [`07_adapter/`](./07_adapter) |
 | 08 | **Template Method** | Behavioral | ⬜ | - |
 | 09 | **Iterator & Composite** | Behavioral | ⬜ | - |
 | 10 | **State** | Behavioral | ⬜ | - |

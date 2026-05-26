@@ -1,0 +1,1 @@
+![Class Diagram](../diagram/02_observer.svg)

@@ -21,7 +21,7 @@ void subject::notifyObservers(int number)
     lock_guard<mutex> Lock(mtx);
     for(const auto& element : obj)
     {
-        if(element.expired())
+        if(!element.expired())
         {
             auto ptr = element.lock();
             ptr->update(number);

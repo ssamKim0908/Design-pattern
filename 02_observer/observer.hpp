@@ -36,21 +36,20 @@ public:
 
     ObserverThread(const ObserverThread &&obj)              = delete;
     ObserverThread &operator=(const ObserverThread &&obj)   = delete;
-
+    
+    void startThread();
+    void update(int newNum) override;
+    
+    ~ObserverThread();
+protected:
     void wait();
     void post();
-
-    void startThread();
-
-    void update(int newNum) override;
 
     void setTrue() { finish = true; }
     bool getTrue() { return finish; }
 
     virtual void threadImpl() = 0;
     int getNum() { return num; }
-
-    ~ObserverThread();
 };
 
 class ObserverThreadFirstClassImpl : public ObserverThread

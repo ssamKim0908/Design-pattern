@@ -6,7 +6,6 @@ int main()
 {
     shared_ptr<ISubject> sub = make_shared<subject>();
 
-
     shared_ptr<ObserverThread> a = make_shared<ObserverThreadFirstClassImpl>(string("qwer"), 10);
     shared_ptr<ObserverThread> b = make_shared<ObserverThreadSecondClassImpl>(string("asdf"), 20);
     shared_ptr<ObserverThread> c = make_shared<ObserverThreadThirdClassImpl>(string("zxcv"), 30);
